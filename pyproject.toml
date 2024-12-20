@@ -11,6 +11,8 @@ python = "^3.10"
 fastapi = "^0.111.1"
 pydantic = "^2.8.2"
 python-dotenv = "^1.0.1"
+transformers = "^4.47.1"
+torch = "^2.5.1"
 
 
 [tool.poetry.group.dev.dependencies]

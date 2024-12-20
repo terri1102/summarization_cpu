@@ -2,14 +2,13 @@ import torch
 from transformers import AutoTokenizer, BartForConditionalGeneration
 
 class TextSummarizer:
-    def __init__(self, model_name: str = "facebook/bart-large-cnn"):
+    def __init__(self, model_name: str = "facebook/bart-large-cnn", device: str = "cpu"):
         self.model_name = model_name
-        self.device = self._set_device()
+        self.device = torch.device("cpu") #device if device else self._set_device()
         self.tokenizer = AutoTokenizer.from_pretrained(self.model_name)
         self.model = BartForConditionalGeneration.from_pretrained(self.model_name).to(self.device)
 
     def _set_device(self) -> torch.device:
-
         if torch.cuda.is_available():
             print("Using CUDA GPU")
             return torch.device("cuda")
